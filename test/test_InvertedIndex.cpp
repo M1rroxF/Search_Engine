@@ -1,4 +1,4 @@
-#include "../include/InvertedIndex.h"
+#include "InvertedIndex.h"
 #include "gtest/gtest.h"
 
 using namespace std;

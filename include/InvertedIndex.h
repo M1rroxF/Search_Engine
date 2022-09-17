@@ -1,13 +1,10 @@
-#ifndef SEARCHENGINE_INVERTEDINDEX_H
-#define SEARCHENGINE_INVERTEDINDEX_H
+#pragma once
 
-#include <iostream>
 #include <vector>
 #include <map>
 #include <string>
 #include <thread>
 #include <future>
-#include <mutex>
 
 using namespace std;
 
@@ -39,7 +36,5 @@ public:
      * @param word - слово, частоту вхождений которого необходимо определить
      * @return возвращает подготовленный список с частотой слов
      */
-    vector<Entry> GetWordCount(const string& word);
+    vector<Entry> GetWordCount(const string& word) const;
 };
-
-#endif //SEARCHENGINE_INVERTEDINDEX_H

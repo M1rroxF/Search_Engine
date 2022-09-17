@@ -1,13 +1,18 @@
-#include "../include/ConverterJSON.h"
-#include "../include/SearchServer.h"
+#include "ConverterJSON.h"
+#include "InvertedIndex.h"
+#include "SearchServer.h"
 
 #include <iostream>
 
-#define LAST_VER 1
+#define LAST_VER 2
 
 using namespace std;
 
 int main() {
+    if (ConverterJson::check_json_files()) {
+        cout << "Enter data in config and requests json" << endl;
+        exit(0);
+    }
     ConverterJson converterJson;
     cout << "|=======Start=======|" << endl;
     cout << "Name: " << converterJson.GetName() << endl;

@@ -1,7 +1,5 @@
-#ifndef SEARCHENGINE_SEARCHSERVER_H
-#define SEARCHENGINE_SEARCHSERVER_H
+#pragma once
 
-#include <iostream>
 #include <vector>
 #include <map>
 #include <string>
@@ -15,6 +13,9 @@ struct RelativeIndex{
     float rank;
     bool operator ==(const RelativeIndex& other) const {
         return (doc_id == other.doc_id && rank == other.rank);
+    }
+    bool operator >(const RelativeIndex& other) const {
+        return (rank > other.rank);
     }
 };
 
@@ -36,5 +37,3 @@ public:
      */
     vector<vector<RelativeIndex>> search(const vector<string>& queries_input);
 };
-
-#endif //SEARCHENGINE_SEARCHSERVER_H

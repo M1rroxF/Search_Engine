@@ -1,41 +1,45 @@
-#ifndef SEARCHENGINE_CONVERTERJSON_H
-#define SEARCHENGINE_CONVERTERJSON_H
+#pragma once
 
-#include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 
 #include "nlohmann/json.hpp"
-#include "gtest/gtest.h"
 
 using namespace std;
 using namespace nlohmann;
 
 class ConverterJson {
+private:
     json config_json;
     json requests_json;
+
 public:
     ConverterJson();
+
+    /**
+     * метод проверяет наличие нужных json файлов
+     */
+    static bool check_json_files();
 
     /**
      * Метод получения наименования приложения
      * @return Возвращает название проекта
      */
-    string GetName();
+    string GetName() const;
 
     /**
      * Метод получения версии приложения
      * @return возвращает версию приложения
      */
-    int GetVersion();
+    int GetVersion() const;
 
     /**
     * Метод получения содержимого файлов
     * @return Возвращает список с содержимым файлов перечисленных
     * в config.json
     */
-    vector<string> GetTextDocuments();
+    vector<string> GetTextDocuments() const;
 
     /**
     * Метод считывает поле max_responses для определения предельного
@@ -48,13 +52,10 @@ public:
     * Метод получения запросов из файла requests.json
     * @return возвращает список запросов из файла requests.json
     */
-    vector<string> GetRequests();
+    vector<string> GetRequests() const;
 
     /**
     * Положить в файл answers.json результаты поисковых запросов
     */
-    void putAnswers(vector<vector<pair<int, float>>> answers);
+    void putAnswers(const vector<vector<pair<int, float>>>& answers) const;
 };
-
-
-#endif //SEARCHENGINE_CONVERTERJSON_H

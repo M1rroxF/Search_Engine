@@ -1,4 +1,4 @@
-# Search Server
+# Search Server V2
 
 ### Description
 This is a simple search engine 
@@ -6,24 +6,22 @@ for adding it to larger projects.
 
 ### How to install
 You have to fulfill several conditions
-* cxx 11 +
+* cxx 17+
 * gcc compiler
 
-You should download project and in the 
-place where the exe file will be created, 
-you have to create json files
+You should download project and compile them
+
+then enter the data in .json files
 * config.json - to configure the search
 * requests.json - for making requests
-* answers.json - to output search data
 
-### Examples json files
-
+#### Examples json files
 config.json
 ```json
 {
   "config": {
     "name": "Searcher",
-    "version": "1",
+    "version": "2",
     "max_responses": 5
   },
   "files": [
@@ -43,6 +41,8 @@ requests.json
   ]
 }
 ```
+After that, the answers will be written 
+to the answers.json file
 
 ### Tests
 This project uses Google tests

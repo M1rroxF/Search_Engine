@@ -1,4 +1,4 @@
-#include "../include/SearchServer.h"
+#include "SearchServer.h"
 #include "gtest/gtest.h"
 
 TEST(TestCaseSearchServer, TestSimple) {
