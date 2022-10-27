@@ -1,0 +1,11 @@
+{
+  "config": {
+    "max_responses": 5,
+    "name": "searcher",
+    "version": 1
+  },
+  "files": [
+    "dir/f1.txt",
+    "dir/f2.txt"
+  ]
+}

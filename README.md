@@ -4,6 +4,8 @@
 This is a simple search engine 
 for adding it to larger projects.
 
+the examples are located in the "examples" folder
+
 ### How to install
 You have to fulfill several conditions
 * cxx 17+
@@ -23,7 +25,7 @@ $ cmake ..
 $ cmake --build . --config Release --target SearchEngine
 ```
 
-run once project 
+run project once
 ```text
 $ ./Release/SearchEngine
 ```
@@ -38,7 +40,7 @@ config.json
 {
   "config": {
     "name": "Searcher",
-    "version": "2",
+    "version": 1,
     "max_responses": 5
   },
   "files": [

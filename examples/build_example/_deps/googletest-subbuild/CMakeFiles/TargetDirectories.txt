@@ -1,0 +1,3 @@
+D:/forWork/projects/C++ - Standart/Current/Search Engine/examples/build_example/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+D:/forWork/projects/C++ - Standart/Current/Search Engine/examples/build_example/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+D:/forWork/projects/C++ - Standart/Current/Search Engine/examples/build_example/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir

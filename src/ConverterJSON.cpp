@@ -1,5 +1,11 @@
 #include "ConverterJSON.h"
 
+class Items_not_found : public exception {
+    const char* what() const noexcept override {
+        return "Error: some items were not found in json files";
+    }
+};
+
 /**
  * вспомогательня функция для получения содержимого документов
  * @param fileName - название файла для чтения
@@ -7,9 +13,38 @@
  */
 string readFile(const string& fileName) {
     ifstream file(fileName);
+    if (!file.is_open()) {
+        cerr << "Error: file \"" << fileName << "\" not found!" << endl;
+        file.close();
+        exit(1);
+    }
     stringstream ss;
     ss << file.rdbuf();
+    file.close();
     return ss.str();
+}
+
+ConverterJson::ConverterJson() {
+    try {
+        config_json = json::parse(readFile("config.json"));
+        if (!config_json["config"].count("name") or !config_json["config"].count("version")
+                or !config_json["config"].count("max_responses") or !config_json.count("files")) {
+            throw Items_not_found();
+        }
+
+        requests_json = json::parse(readFile("requests.json"));
+        if (!requests_json.count("requests")) {
+            throw Items_not_found();
+        }
+    }
+    catch (json::parse_error& e) {
+        cerr << "Error: The syntax of json documents is corrupted!" << endl;
+        exit(1);
+    }
+    catch (exception& e) {
+        cerr << e.what() << endl;
+        exit(1);
+    }
 }
 
 bool ConverterJson::check_json_files() {
@@ -47,11 +82,6 @@ bool ConverterJson::check_json_files() {
     return exit;
 }
 
-ConverterJson::ConverterJson() {
-    config_json = json::parse(readFile("config.json"));
-    requests_json = json::parse(readFile("requests.json"));
-}
-
 string ConverterJson::GetName() const {
     return config_json["config"]["name"];
 }
@@ -85,7 +115,7 @@ vector<string> ConverterJson::GetRequests() const
  * @param num - число дла изменения кол-ва цифр
  * @return возвращает число с определённым кол-ом цифр
  */
-string getStrNum(const int& num) {
+string getStrNum(int num) {
     string str_num = to_string(num);
     string ret_num;
     for (int i = 0; i < 3-str_num.length(); i++) {
@@ -108,6 +138,12 @@ void ConverterJson::putAnswers(const vector<vector<pair<int, float>>>& answers) 
         }
     }
     ofstream answers_file("answers.json");
-    answers_file << setw(2) << answers_json;
+    if (answers_file.is_open()) {
+        answers_file << setw(2) << answers_json;
+    }
+    else {
+        cerr << "Error: file \"answers.json\" unavailable" << endl;
+        exit(1);
+    }
     answers_file.close();
 }

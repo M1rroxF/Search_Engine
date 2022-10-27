@@ -1,0 +1,2 @@
+C:\PROGRA~2\mingw64\bin\ar.exe qc ..\..\..\lib\libgmock.a "CMakeFiles/gmock.dir/src/gmock-all.cc.obj"
+C:\PROGRA~2\mingw64\bin\ranlib.exe ..\..\..\lib\libgmock.a

@@ -4,27 +4,27 @@
 
 #include <iostream>
 
-#define LAST_VER 2
+#define CURRENT_VER 1
 
 using namespace std;
 
 int main() {
     if (ConverterJson::check_json_files()) {
         cout << "Enter data in config and requests json" << endl;
-        exit(0);
+        exit(1);
     }
     ConverterJson converterJson;
     cout << "|=======Start=======|" << endl;
     cout << "Name: " << converterJson.GetName() << endl;
-    cout << "Last Version: " << LAST_VER << endl;
+    cout << "Last Version: " << CURRENT_VER << endl;
     cout << "Current Version: " << converterJson.GetVersion() << endl;
-    if (converterJson.GetVersion() == LAST_VER) {
+    if (converterJson.GetVersion() == CURRENT_VER) {
         cout << "compatibility: Y" << endl;
     }
     else {
         cout << "compatibility: N" << endl;
         cout << "|========End========|" << endl;
-        exit(0);
+        exit(1);
     }
     cout << "|======Search=======|" << endl;
     InvertedIndex index;
